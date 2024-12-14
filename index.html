@@ -5,32 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Bracket</title>
     <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
-
     <style>
-        /* Ensure the body has full width and height */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
+            /* This code modification and project is done by kaniska */
+            /* Contact: sofiyasenthilkumar@gmail.com */
+            /* GitHub: https://github.com/guider23/ */
+            /* Instagram: @1x.ub_ */
         }
 
-        /* Make sure the widget container takes up the entire viewport */
         .commonninja_component {
-            width: 100% !important; /* Full width */
-            height: 100vh !important; /* Full height (viewport height) */
-            overflow: hidden; /* Prevent scrolling inside the widget */
+            width: 100% !important;
+            height: 100vh !important;
+            overflow: hidden;
+            /* This code modification and project is done by kaniska */
+            /* Contact: sofiyasenthilkumar@gmail.com */
+            /* GitHub: https://github.com/guider23/ */
+            /* Instagram: @1x.ub_ */
         }
 
-        /* Optionally, ensure the iframe or any internal content fills the container */
         .commonninja_component iframe,
         .commonninja_component .commonninja-widget-content {
             width: 100% !important;
             height: 100% !important;
-            border: none; /* Remove any borders */
+            border: none;
+            /* This code modification and project is done by kaniska */
+            /* Contact: sofiyasenthilkumar@gmail.com */
+            /* GitHub: https://github.com/guider23/ */
+            /* Instagram: @1x.ub_ */
         }
 
-        /* Fullscreen button style */
         #fullscreen-btn {
             position: fixed;
             top: 10px;
@@ -42,70 +49,82 @@
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
-            z-index: 9999; /* Make sure the button is always on top */
+            z-index: 9999;
+            /* This code modification and project is done by kaniska */
+            /* Contact: sofiyasenthilkumar@gmail.com */
+            /* GitHub: https://github.com/guider23/ */
+            /* Instagram: @1x.ub_ */
         }
 
         #fullscreen-btn:hover {
             background-color: #45a049;
+            /* This code modification and project is done by kaniska */
+            /* Contact: sofiyasenthilkumar@gmail.com */
+            /* GitHub: https://github.com/guider23/ */
+            /* Instagram: @1x.ub_ */
         }
     </style>
 </head>
 <body>
     <button id="fullscreen-btn">Enter Fullscreen</button>
     <div class="commonninja_component pid-c16a0f7f-66a3-4900-b7a4-6bf15b582205"></div>
-    
     <script>
-        // Prevent the Common Ninja tracking functions from executing
         document.addEventListener("DOMContentLoaded", function() {
-            // Block the function that tracks views (Common Ninja event tracking)
             window["commonninja-js-sdk"] = function(e) {
-                // Override or block all tracking methods
-                e.d = function() {}; // Disable page view tracking
-                e.c = function() {}; // Disable other event tracking
-                e.b = function() {}; // Disable interactions or clicks
+                e.d = function() {};
+                e.c = function() {};
+                e.b = function() {};
                 return e;
+                /* This code modification and project is done by kaniska */
+                /* Contact: sofiyasenthilkumar@gmail.com */
+                /* GitHub: https://github.com/guider23/ */
+                /* Instagram: @1x.ub_ */
             };
 
-            // Set an interval to check for the watermark and remove it if present
             const interval = setInterval(function() {
                 const ribbon = document.querySelector('.commonninja-ribbon-link');
                 if (ribbon) {
-                    ribbon.remove(); // Remove the watermark if it exists
-                    clearInterval(interval); // Stop checking once it's removed
+                    ribbon.remove();
+                    clearInterval(interval);
                 }
-            }, 100); // Check every 100ms
+            }, 100);
+            /* This code modification and project is done by kaniska */
+            /* Contact: sofiyasenthilkumar@gmail.com */
+            /* GitHub: https://github.com/guider23/ */
+            /* Instagram: @1x.ub_ */
         });
 
-        // Fullscreen functionality
         const fullscreenBtn = document.getElementById('fullscreen-btn');
         const element = document.querySelector('.commonninja_component');
 
-        // Function to toggle fullscreen mode
         function toggleFullscreen() {
-            if (!document.fullscreenElement &&    // If not in fullscreen
-                !document.mozFullScreenElement && !document.webkitFullscreenElement) {  // For Firefox/Chrome
+            if (!document.fullscreenElement &&
+                !document.mozFullScreenElement && !document.webkitFullscreenElement) {
                 if (element.requestFullscreen) {
-                    element.requestFullscreen();  // For modern browsers
+                    element.requestFullscreen();
                 } else if (element.mozRequestFullScreen) {
-                    element.mozRequestFullScreen();  // For Firefox
+                    element.mozRequestFullScreen();
                 } else if (element.webkitRequestFullscreen) {
-                    element.webkitRequestFullscreen();  // For Chrome and Safari
+                    element.webkitRequestFullscreen();
                 }
-                fullscreenBtn.innerHTML = "Exit Fullscreen";  // Change button text
+                fullscreenBtn.innerHTML = "Exit Fullscreen";
             } else {
                 if (document.exitFullscreen) {
-                    document.exitFullscreen();  // Exit fullscreen for modern browsers
+                    document.exitFullscreen();
                 } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();  // Firefox
+                    document.mozCancelFullScreen();
                 } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();  // Chrome/Safari
+                    document.webkitExitFullscreen();
                 }
-                fullscreenBtn.innerHTML = "Enter Fullscreen";  // Reset button text
+                fullscreenBtn.innerHTML = "Enter Fullscreen";
             }
         }
 
-        // Add event listener to the button
         fullscreenBtn.addEventListener('click', toggleFullscreen);
+        /* This code modification and project is done by kaniska */
+        /* Contact: sofiyasenthilkumar@gmail.com */
+        /* GitHub: https://github.com/guider23/ */
+        /* Instagram: @1x.ub_ */
     </script>
 </body>
 </html>
