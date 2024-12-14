@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Bracket</title>
+    <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+
+    <style>
+        /* Ensure the body has full width and height */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Make sure the widget container takes up the entire viewport */
+        .commonninja_component {
+            width: 100% !important; /* Full width */
+            height: 100vh !important; /* Full height (viewport height) */
+            overflow: hidden; /* Prevent scrolling inside the widget */
+        }
+
+        /* Optionally, ensure the iframe or any internal content fills the container */
+        .commonninja_component iframe,
+        .commonninja_component .commonninja-widget-content {
+            width: 100% !important;
+            height: 100% !important;
+            border: none; /* Remove any borders */
+        }
+
+        /* Fullscreen button style */
+        #fullscreen-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 9999; /* Make sure the button is always on top */
+        }
+
+        #fullscreen-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <button id="fullscreen-btn">Enter Fullscreen</button>
+    <div class="commonninja_component pid-c16a0f7f-66a3-4900-b7a4-6bf15b582205"></div>
+    
+    <script>
+        // Prevent the Common Ninja tracking functions from executing
+        document.addEventListener("DOMContentLoaded", function() {
+            // Block the function that tracks views (Common Ninja event tracking)
+            window["commonninja-js-sdk"] = function(e) {
+                // Override or block all tracking methods
+                e.d = function() {}; // Disable page view tracking
+                e.c = function() {}; // Disable other event tracking
+                e.b = function() {}; // Disable interactions or clicks
+                return e;
+            };
+
+            // Set an interval to check for the watermark and remove it if present
+            const interval = setInterval(function() {
+                const ribbon = document.querySelector('.commonninja-ribbon-link');
+                if (ribbon) {
+                    ribbon.remove(); // Remove the watermark if it exists
+                    clearInterval(interval); // Stop checking once it's removed
+                }
+            }, 100); // Check every 100ms
+        });
+
+        // Fullscreen functionality
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        const element = document.querySelector('.commonninja_component');
+
+        // Function to toggle fullscreen mode
+        function toggleFullscreen() {
+            if (!document.fullscreenElement &&    // If not in fullscreen
+                !document.mozFullScreenElement && !document.webkitFullscreenElement) {  // For Firefox/Chrome
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();  // For modern browsers
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();  // For Firefox
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen();  // For Chrome and Safari
+                }
+                fullscreenBtn.innerHTML = "Exit Fullscreen";  // Change button text
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();  // Exit fullscreen for modern browsers
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();  // Firefox
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();  // Chrome/Safari
+                }
+                fullscreenBtn.innerHTML = "Enter Fullscreen";  // Reset button text
+            }
+        }
+
+        // Add event listener to the button
+        fullscreenBtn.addEventListener('click', toggleFullscreen);
+    </script>
+</body>
+</html>
