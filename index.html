@@ -37,36 +37,9 @@
             /* GitHub: https://github.com/guider23/ */
             /* Instagram: @1x.ub_ */
         }
-
-        #fullscreen-btn {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            z-index: 9999;
-            /* This code modification and project is done by kaniska */
-            /* Contact: sofiyasenthilkumar@gmail.com */
-            /* GitHub: https://github.com/guider23/ */
-            /* Instagram: @1x.ub_ */
-        }
-
-        #fullscreen-btn:hover {
-            background-color: #45a049;
-            /* This code modification and project is done by kaniska */
-            /* Contact: sofiyasenthilkumar@gmail.com */
-            /* GitHub: https://github.com/guider23/ */
-            /* Instagram: @1x.ub_ */
-        }
     </style>
 </head>
 <body>
-    <button id="fullscreen-btn">Enter Fullscreen</button>
     <div class="commonninja_component pid-c16a0f7f-66a3-4900-b7a4-6bf15b582205"></div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -93,38 +66,6 @@
             /* GitHub: https://github.com/guider23/ */
             /* Instagram: @1x.ub_ */
         });
-
-        const fullscreenBtn = document.getElementById('fullscreen-btn');
-        const element = document.querySelector('.commonninja_component');
-
-        function toggleFullscreen() {
-            if (!document.fullscreenElement &&
-                !document.mozFullScreenElement && !document.webkitFullscreenElement) {
-                if (element.requestFullscreen) {
-                    element.requestFullscreen();
-                } else if (element.mozRequestFullScreen) {
-                    element.mozRequestFullScreen();
-                } else if (element.webkitRequestFullscreen) {
-                    element.webkitRequestFullscreen();
-                }
-                fullscreenBtn.innerHTML = "Exit Fullscreen";
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                }
-                fullscreenBtn.innerHTML = "Enter Fullscreen";
-            }
-        }
-
-        fullscreenBtn.addEventListener('click', toggleFullscreen);
-        /* This code modification and project is done by kaniska */
-        /* Contact: sofiyasenthilkumar@gmail.com */
-        /* GitHub: https://github.com/guider23/ */
-        /* Instagram: @1x.ub_ */
     </script>
 </body>
 </html>
